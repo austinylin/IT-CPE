@@ -88,14 +88,14 @@ end
 def get_server
   # We have multiple servers and us this funtion
   # to determine which server a given client should
-  # be pointed to based on the location. 
+  # be pointed to based on the location.
   node['remote_pkg']['server']
 end
 
 def gen_url(server, path, file)
   username = node['remote']['username']
   pass = node['remote']['pass']
-  user_pass = username ? "#{username}:#{pass}@" : '' 
+  user_pass = username ? "#{username}:#{pass}@" : ''
   pkg_url = "https://#{user_pass}#{server}/chef/#{path}/#{file}"
   pkg_url
 end
