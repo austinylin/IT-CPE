@@ -30,12 +30,17 @@ property :version, :kind_of => String, :default => nil
 action :install do
   unless installed?
 
-    pkg_name = app
-    pkg_version_str = "-#{version}"
     chef_cache = Chef::Config[:file_cache_path]
 
-    pkg_file = "#{pkg_name}#{pkg_version_str}.pkg"
-    pkg_file_path = "#{chef_cache}/#{pkg_file}"
+    # Determine package file path based on arguments provided.
+    if pkg_name
+      pkg_file = "#{pkg_name}.pkg"
+      pkg_file_path = "#{chef_cache}/#{pkg_file}"
+    else
+      pkg_version_str = "-#{version}"
+      pkg_file = "#{pkg_name}#{pkg_version_str}.pkg"
+      pkg_file_path = "#{chef_cache}/#{pkg_file}"
+    end
 
     if remote
       pkg_source = gen_url(get_server, pkg_name, pkg_file)

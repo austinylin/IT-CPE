@@ -24,7 +24,7 @@ knife exec -E 'p Chef::Config[:file_cache_path]' -c /etc/chef/client.rb
 - `app` - This is the name of the app that the pkg will be installing.
 - `checksum` - sha256 checksum of the pkg to download.
 - `cleanup` - Specify whether or not we should keep the downloaded pkg.
-- `pkg_name` - Specify the name of the pkg if it is not the same as `app`-`version`, or if the name has spaces.
+- `pkg_name` - Specify the name of the pkg if it is not the same as `app`-`version`, or if the name has spaces. Don't include .pkg.
 - `receipt` - Receipt registered with pkgutil when a pkg is installed.
 - `remote` - Specify whether or not we should attmpt to download the pkg.
 - `version` - string of version number.
